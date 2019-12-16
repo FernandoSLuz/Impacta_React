@@ -21,9 +21,7 @@ export class Menu extends React.Component {
                             <Link className="nav-link" to='/cursos'>Cursos</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/contato'>
-                                Contato
-                            </Link>
+                            <Link className="nav-link" to='/contato'>Contato</Link>
                         </li>
                     </ul>
                 </div>
