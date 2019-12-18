@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class ListCurso extends Component {
 
-    exibirLinhas(){
+    exibirLinhas() {
         //retorna a lista de props se existir
         const cursos = this.props.cursos || [];
         return cursos.map(curso => (
@@ -11,6 +11,15 @@ export class ListCurso extends Component {
                 <td>{curso.descricao}</td>
                 <td>{curso.cargaHoraria}</td>
                 <td>{curso.preco}</td>
+                <td>
+                <button className="btn btn-success ml-3" 
+                    onClick={() => this.props.consultar(curso)}>
+                    <i className="fa fa-check"></i>
+                </button>
+                <button className="btn btn-danger ml-3" onClick={() => this.props.remover(curso)}>
+                    <i className="fa fa-trash-o"></i>
+                </button>
+                </td>
             </tr>
         ));
     }
