@@ -7,7 +7,7 @@ class ContatoIndex extends React.Component {
     render() {
         return (
             <div className="container">
-                <Cabecalho titulo="Contato" subtitulo={`Quer entrar em contato conosco ${this.props.nome}`} />
+                <Cabecalho titulo="Contato" subtitulo={`Entre em contato conosco - ${this.props.nome}`} />
                 <ContatoForm />
             </div>
         )

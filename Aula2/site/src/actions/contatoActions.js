@@ -1,39 +1,39 @@
-export const dataOnChange = function(e){
+export const dataOnChange = function(event){
     return {
         type: 'ATUALIZAR_DATA',
-        value: e.target.value
+        value: event.target.value
     }
 }
 
-export const nomeOnChange = function(e){
+export const nomeOnChange = function(event){
     return {
         type: 'ATUALIZAR_NOME',
-        value: e.target.value
+        value: event.target.value
     }
 }
 
-export const emailOnChange = function(e){
+export const emailOnChange = function(event){
     return {
         type: 'ATUALIZAR_EMAIL',
-        value: e.target.value
+        value: event.target.value
     }
 }
 
-export const telOnChange = function(e){
+export const telOnChange = function(event){
     return {
         type: 'ATUALIZAR_TEL',
-        value: e.target.value
+        value: event.target.value
     }
 }
 
-export const assuntoOnChange = function(e){
+export const assuntoOnChange = function(event){
     return {
         type: 'ATUALIZAR_ASSUNTO',
-        value: e.target.value
+        value: event.target.value
     }
 }
 
-export const limpar = function(e){
+export const limpar = function(event){
     return{
         type: 'LIMPAR'
     }
