@@ -4,13 +4,22 @@ import { bindActionCreators } from 'redux'
 import { dataOnChange, 
         nomeOnChange,
         emailOnChange,
-        telOnChange,
+        telefoneOnChange,
         assuntoOnChange,
-        limpar
+        limpar,
+        adicionar
 } from '../../actions/contatoActions'
 
 
 class ContatoForm extends React.Component {
+
+    preAdicionar(evento){
+        console.log("aoba")
+        evento.preventDefault();
+        const {data, nome, email, telefone, assunto, adicionar} = this.props;
+        adicionar(data, nome, email, telefone, assunto);
+    }
+
     render() {
         return (
             <div>
@@ -53,7 +62,7 @@ class ContatoForm extends React.Component {
                             <input type="number"
                                 className="form-control" id="telefone"
                                 value={this.props.telefone} 
-                                onChange={this.props.telOnChange}/>
+                                onChange={this.props.telefoneOnChange}/>
                         </div>
                     </div>
                     <div className="form-group row">
@@ -67,11 +76,15 @@ class ContatoForm extends React.Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <button className="btn btn-primary ml-3 mb-3">
+                        <button type="button" className="btn btn-primary ml-3 mb-3" 
+                        onClick={this.preAdicionar.bind(this)}>
                             Adicionar
                         </button>
                         <button className="btn btn-primary ml-3 mb-3"
-                        onClick={this.props.limpar}>
+                        onClick={(e) =>{
+                            e.preventDefault()
+                            this.props.limpar()
+                        }}>
                             Limpar
                         </button>
                     </div>
@@ -93,9 +106,10 @@ const mapActionsToProps = dispatch => bindActionCreators({
     dataOnChange,
     nomeOnChange,
     emailOnChange,
-    telOnChange,
+    telefoneOnChange,
     assuntoOnChange,
-    limpar
+    limpar,
+    adicionar
 }, dispatch)
 
 export default connect(mapStateToProps, mapActionsToProps)(ContatoForm)

@@ -1,3 +1,6 @@
+import axios from 'axios'
+const URL = 'http://localhost:3200/api/contatos'
+
 export const dataOnChange = function(event){
     return {
         type: 'ATUALIZAR_DATA',
@@ -19,11 +22,12 @@ export const emailOnChange = function(event){
     }
 }
 
-export const telOnChange = function(event){
+export const telefoneOnChange = function(event){
     return {
-        type: 'ATUALIZAR_TEL',
+        type: 'ATUALIZAR_TELEFONE',
         value: event.target.value
     }
+
 }
 
 export const assuntoOnChange = function(event){
@@ -34,7 +38,32 @@ export const assuntoOnChange = function(event){
 }
 
 export const limpar = function(event){
+    if(event){
+        event.preventDefault();
+    }
     return{
-        type: 'LIMPAR'
+        type: 'LIMPAR_FORM'
+    }
+}
+
+export const adicionar = function(data, nome, email, telefone, assunto){
+    return (dispatch) => {
+        return axios.post(URL,{
+            data,
+            nome,
+            email,
+            telefone,
+            assunto
+        })
+        .then(_ =>{
+            alert('Contato enviado!')
+            dispatch({
+                type : 'LIMPAR_FORM'
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            alert('Erro ao salvar contato');
+        });
     }
 }
